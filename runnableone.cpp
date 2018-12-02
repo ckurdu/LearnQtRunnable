@@ -10,7 +10,6 @@
 
 RunnableOne::RunnableOne(int p_id):id(p_id)
 {
-
 }
 
 void RunnableOne::run()

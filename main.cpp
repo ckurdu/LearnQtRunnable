@@ -3,7 +3,6 @@
 #include <runnableone.h>
 #include <QThreadPool>
 #include <QDebug>
-#include <threadapp.h>
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +14,7 @@ int main(int argc, char *argv[])
 
     QTimer timer1, timer2, timer3, timer4;
 
-    QObject::connect(&timer1,&QTimer::timeout,run1,&RunnableOne::onTimeOut);
+    timer1.singleShot(5000,run1,&RunnableOne::onTimeOut); //true usage for this example
     QObject::connect(&timer2,&QTimer::timeout,run2,&RunnableOne::onTimeOut);
     QObject::connect(&timer3,&QTimer::timeout,run3,&RunnableOne::onTimeOut);
 
@@ -25,7 +24,6 @@ int main(int argc, char *argv[])
         {
             return;
         }
-        //qDebug()<<"quit"<<endl;
         QCoreApplication::quit();
     });
     QObject::connect(&a,&QCoreApplication::aboutToQuit,[=](){
@@ -37,7 +35,7 @@ int main(int argc, char *argv[])
     QThreadPool::globalInstance()->start(run3,0);
 
 
-    timer1.start(5000);
+    //timer1.start(5000);
     timer2.start(6000);
     timer3.start(8000);
     timer4.start(5000);

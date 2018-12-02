@@ -17,8 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     runnableone.cpp \
-    worker.cpp \
-    threadapp.cpp
+    worker.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -27,5 +26,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     runnableone.h \
-    worker.h \
-    threadapp.h
+    worker.h
